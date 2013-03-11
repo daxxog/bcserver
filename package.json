@@ -3,7 +3,7 @@
     "description" : "BarCode Server",
     "homepage"    : "https://github.com/daxxog/bcserver",
     "main"        : "server.js",
-    "version"     : "0.0.2",
+    "version"     : "0.0.3",
     "engines": { "node" : ">=0.4.0" },
     "maintainers": [{
         "name"  : "David Volm",
