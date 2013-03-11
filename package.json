@@ -1,0 +1,24 @@
+{
+    "name"        : "bcserver",
+    "description" : "BarCode Server",
+    "homepage"    : "https://github.com/daxxog/bcserver",
+    "main"        : "server.js",
+    "version"     : "0.0.1",
+    "engines": { "node" : ">=0.4.0" },
+    "maintainers": [{
+        "name"  : "David Volm",
+        "email" : "david@volminator.com",
+        "web"   : "http://daxxog.com/"
+    }],
+    "repositories": [{
+        "type" : "git",
+        "url"  : "https://github.com/daxxog/bcserver.git"
+    }],
+    "dependencies": {
+        "express" : "*",
+        "bufferstream": "*"
+    },
+    "bin": {
+        "bcbf" : "./bin/bcserver"
+    }
+}
