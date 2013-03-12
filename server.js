@@ -8,7 +8,8 @@
 var express = require('express'),
     BufferStream = require('bufferstream'),
     spawn = require('child_process').spawn,
-    fs = require('fs');
+    fs = require('fs'),
+    path = require('path');
 
 var bc = {};
 
@@ -69,8 +70,8 @@ var packageDotJson = JSON.parse(fs.readFileSync(__dirname + '/package.json', 'ut
         description: packageDotJson.description,
         version: packageDotJson.version,
         api: {
-            png: '/barcode.png',
-            svg: '/barcode.svg'
+            png: '/{{barcode}}.png',
+            svg: '/{{barcode}}.svg'
         }
     };
 
@@ -80,18 +81,23 @@ if(process.argv[2] === '-p' && (typeof process.argv[3] != 'undefined')) {
     server_info.port = process.argv[3];
 }
 
+app.use(function(req, res, next) {
+    req.basename = path.basename(req.url, path.extname(req.url));
+    next();
+});
+
 app.get('/', function(req, res) {
     res.json(server_info);
 });
 
-app.get(server_info.api.svg, function(req, res) {
-    var zint = bc.zint(req.query.q);
+app.get('/*.svg', function(req, res) {
+    var zint = bc.zint(req.basename);
     res.type('svg');
     zint.stdout.pipe(res);
 });
 
-app.get(server_info.api.png, function(req, res) {
-    var png = bc.png(bc.zint(req.query.q));
+app.get('/*.png', function(req, res) {
+    var png = bc.png(bc.zint(req.basename));
     res.type('png');
     png.stdout.pipe(res);
 });

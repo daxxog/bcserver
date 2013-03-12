@@ -25,5 +25,5 @@ Example
 ```bash
 (bcserver -p 8888) &
 #wait a few seconds for server to start then do this:
-curl http://localhost:8888/barcode.svg?q=12345
+curl http://localhost:8888/12345.svg
 ```
