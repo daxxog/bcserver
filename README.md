@@ -9,6 +9,21 @@ Dependencies
 * zint
 * imagemagick
 
+Install deps (ubuntu)
+---------------------
+```
+sudo apt-get install imagemagick cmake libpng-dev
+
+mkdir ~/dev
+cd ~/dev
+curl -L https://github.com/zint/zint/archive/master.tar.gz | tar zx
+cd zint-master
+cmake .
+make
+
+sudo make install
+```
+
 Install (try sudo)
 -------
 stable
