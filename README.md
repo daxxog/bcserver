@@ -34,6 +34,10 @@ edge
 ```bash
 npm install -g https://github.com/daxxog/bcserver/tarball/master
 ```
+upstart
+```bash
+curl -L https://gist.github.com/daxxog/5341036/raw/bcserver-install.sh | sh
+```
 
 Example
 --------
